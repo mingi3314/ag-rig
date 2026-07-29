@@ -1,0 +1,6 @@
+interface:
+  display_name: "Graphite CLI"
+  short_description: "Use Graphite for stack-aware branch and PR work."
+  default_prompt: "Use $graphite-cli for safe, non-interactive Graphite operations instead of plain git or manual stacked PR commands."
+policy:
+  allow_implicit_invocation: false

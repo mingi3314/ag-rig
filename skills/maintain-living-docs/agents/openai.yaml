@@ -1,0 +1,6 @@
+interface:
+  display_name: "Maintain Living Docs"
+  short_description: "Keep canonical docs current and decisions traceable."
+  default_prompt: "Use $maintain-living-docs to update this plan as the current truth and record material decisions separately."
+policy:
+  allow_implicit_invocation: false

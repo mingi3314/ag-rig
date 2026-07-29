@@ -1,0 +1,7 @@
+interface:
+  display_name: "Sentry Fix Issues"
+  short_description: "Investigate and fix Sentry issues via the Sentry CLI"
+  default_prompt: "Use $sentry-fix-issues to investigate a Sentry issue with the Sentry CLI and implement a verified fix."
+
+policy:
+  allow_implicit_invocation: false

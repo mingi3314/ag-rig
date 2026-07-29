@@ -1,0 +1,6 @@
+interface:
+  display_name: "Stack Lane Publish"
+  short_description: "Publish the current ready PR lane in the stack."
+  default_prompt: "Use $stack-lane-publish to publish the current ready-for-submit stack lane, update its GitHub metadata, and close lane-specific runtime agents."
+policy:
+  allow_implicit_invocation: false

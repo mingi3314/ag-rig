@@ -1,0 +1,6 @@
+interface:
+  display_name: "Workflow Orchestrator"
+  short_description: "Coordinate stacked PR lanes through delegation."
+  default_prompt: "Use $workflow-orchestrator to stay in delegated orchestration mode: manage handoff, pick the active lane, delegate implementation and review, and publish only after independent review."
+policy:
+  allow_implicit_invocation: false

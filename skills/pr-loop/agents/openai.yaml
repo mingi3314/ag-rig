@@ -1,0 +1,6 @@
+interface:
+  display_name: "PR Loop"
+  short_description: "Run one PR lane through delegated execution."
+  default_prompt: "Use $pr-loop to activate the current PR branch, delegate implementation to an implementer, delegate review to an independent reviewer, and advance the lane from their results."
+policy:
+  allow_implicit_invocation: false

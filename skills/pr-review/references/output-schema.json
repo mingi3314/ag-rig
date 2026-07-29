@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CodexSubagentPRReviewOutput",
+  "type": "object",
+  "required": ["summary", "findings", "coverage"],
+  "properties": {
+    "summary": {
+      "type": "object",
+      "required": ["base", "head", "files_reviewed", "review_mode", "verdict"],
+      "properties": {
+        "base": { "type": "string" },
+        "head": { "type": "string" },
+        "files_reviewed": { "type": "integer", "minimum": 0 },
+        "review_mode": { "enum": ["single-agent", "multi-subagent"] },
+        "verdict": { "enum": ["no blocking findings", "findings require attention", "manual review still required"] }
+      },
+      "additionalProperties": false
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["severity", "confidence", "title", "file", "line_start", "line_end", "introduced_by_pr", "category", "evidence", "failure_mode", "suggested_fix"],
+        "properties": {
+          "severity": { "enum": ["P0", "P1", "P2", "Nit"] },
+          "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+          "title": { "type": "string" },
+          "file": { "type": "string" },
+          "line_start": { "type": "integer", "minimum": 1 },
+          "line_end": { "type": "integer", "minimum": 1 },
+          "introduced_by_pr": { "type": "boolean" },
+          "category": { "enum": ["correctness", "security", "tests", "architecture", "performance", "concurrency", "consistency", "code-quality", "repo-rule"] },
+          "evidence": { "type": "string" },
+          "failure_mode": { "type": "string" },
+          "suggested_fix": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "coverage": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["agent", "scope", "result"],
+        "properties": {
+          "agent": { "type": "string" },
+          "scope": { "type": "string" },
+          "result": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,6 @@
+interface:
+  display_name: "PR Review V2"
+  short_description: "Perspective-driven, prioritized PR review."
+  default_prompt: "Use $pr-review-v2 to review this branch from failure, maintainability, and decision perspectives."
+policy:
+  allow_implicit_invocation: false
