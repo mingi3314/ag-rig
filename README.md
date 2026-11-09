@@ -7,7 +7,7 @@ and tool configuration, versioned together and installed across machines with
 ## What's inside
 
 - `skills/`: reusable workflows with their references, scripts, and templates.
-- `instructions/AGENTS.md`: shared engineering principles. Skul installs these as each
+- `instructions/engineering.md`: shared engineering principles. Skul installs these as each
   tool's native instruction file, such as `AGENTS.md` or `CLAUDE.md`.
 - `manifest.json`: explicit Codex and Claude Code targets. The instruction
   source lives under `instructions/` because Skul excludes repository-root

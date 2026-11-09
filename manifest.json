@@ -5,7 +5,7 @@
         "path": "skills"
       },
       "root_instruction": {
-        "path": "instructions/AGENTS.md"
+        "path": "instructions/engineering.md"
       }
     },
     "claude-code": {
@@ -13,7 +13,7 @@
         "path": "skills"
       },
       "root_instruction": {
-        "path": "instructions/AGENTS.md"
+        "path": "instructions/engineering.md"
       }
     }
   }
