@@ -52,16 +52,16 @@ to replace them. Restart the coding tool if new skills do not appear.
 ## Update and edit
 
 ```sh
-# Refresh Skul's Git source cache, then apply the saved global targets.
-git -C ~/.skul/library/github.com/mingi3314/ag-rig pull --ff-only
-skul apply --global
+# Fetch the latest source and reinstall for Codex.
+skul add mingi3314/ag-rig --global --agent codex
 skul status --global
 ```
 
-Skul 0.4.3's `update` command only updates project-scoped installations. The
-commands above update this Git-backed global installation instead. They assume
-the HTTPS or SSH Git clone used in the installation instructions, not Skul's
-GitHub archive transport. Run them after committing and pushing source changes.
+Skul 0.4.3's `update` command only updates project-scoped installations.
+Repeating `add` fetches the latest source and reapplies it globally. Use the
+same `--agent` choices as your initial installation (for both tools, pass
+`--agent codex --agent claude-code`). Run it after committing and pushing source
+changes.
 
 Clone the source repository to edit it:
 
