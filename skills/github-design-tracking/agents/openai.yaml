@@ -1,0 +1,3 @@
+interface:
+  display_name: "GitHub Design Tracking"
+  short_description: "Keep design decisions current and reasoning traceable"

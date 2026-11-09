@@ -3,4 +3,4 @@ interface:
   short_description: "gh로 한국어 PR 제목과 본문을 정리해 제출"
   default_prompt: "Use $submit-pr to inspect the current branch, draft a Korean PR title/body, and open the pull request with gh."
 policy:
-  allow_implicit_invocation: false
+  allow_implicit_invocation: true

@@ -10,6 +10,7 @@ Review changed code from distinct perspectives. Preserve every meaningful observ
 ## Review contract
 
 - Keep the review read-only. Do not edit files, push commits, or post comments unless the user explicitly asks.
+- Assess problems and their impact; leave final solution selection and implementation design to the author. Useful alternatives may be offered as optional proposals rather than prescribed fixes.
 - Infer the base and head from PR metadata or repository defaults when safe. Ask only when ambiguity would materially change the review.
 - Review only issues introduced or materially worsened by the change.
 - Read repository guidance and enough surrounding code, callers, configuration, and tests to understand the change in context.
@@ -25,7 +26,7 @@ For a small, obvious change, apply all perspectives directly. For a nontrivial c
 - `pr_v2_maintainer_reviewer`: Find where a teammate without the author's context would struggle to build an accurate mental model.
 - `pr_v2_decision_reviewer`: Reconstruct and evaluate the decisions expressed by the change.
 
-Give reviewers the user request, base, head, and repository location. Use a fresh subagent for each perspective and let each inspect the raw change independently; do not seed one reviewer with another's conclusions. If capacity is limited, run perspectives in waves instead of reusing a reviewer. If the custom reviewers are unavailable, use generic subagents with the same perspectives. Add a bounded specialist only when the change presents a material domain-specific risk. Do not create recursive fan-out.
+Give reviewers the user request, established requirements and constraints, base, head, and repository location. Pass the review contract and relevant perspective instructions to every reviewer. Use a fresh subagent for each perspective and let each inspect the raw change independently; do not seed one reviewer with another's conclusions. If capacity is limited, run perspectives in waves instead of reusing a reviewer. If the custom reviewers are unavailable, use generic subagents with the same perspectives. Add a bounded specialist only when the change presents a material domain-specific risk. Do not create recursive fan-out.
 
 ### Failure perspective
 
@@ -41,7 +42,7 @@ Treat meaningful comprehension cost as a finding even when no current defect is 
 
 ### Decision perspective
 
-Infer decisions from the code, PR context, and local patterns. Separate observed facts, inferred intent, and unknown constraints. Evaluate whether each material choice is proportionate to its apparent goals and whether a meaningfully better option exists. Treat a merely different alternative as discussion, not a defect, but explain worthwhile discussions deeply enough for the user to evaluate without a follow-up question.
+Infer decisions from the code, PR context, and local patterns. Separate observed facts, inferred intent, and unknown constraints. Evaluate whether each material choice fits established requirements and constraints and whether its benefits justify its costs. Explore meaningfully better alternatives without treating their advantages alone as proof that the current implementation needs correction. Worthwhile alternatives may be discussed even when the current implementation is acceptable.
 
 ## Findings
 
@@ -51,7 +52,7 @@ Classify each finding by its nature:
 
 - `defect`: Incorrect behavior or a concrete product, security, data, compatibility, or operational risk.
 - `maintainability`: A barrier to understanding, safely changing, testing, or owning the code.
-- `design`: A consequential decision or tradeoff with a materially better direction.
+- `design`: A consequential mismatch with established requirements or constraints, or a tradeoff whose concrete costs are not justified by its benefits.
 - `verification`: Missing evidence needed to trust changed behavior, rollout, or recovery.
 
 Prioritize each finding by the cost of leaving it unresolved:
@@ -66,8 +67,8 @@ Do not automatically rank maintainability or design findings as `Minor`. Treat i
 
 Verify candidate findings against the diff and relevant context. Correct inaccurate claims, merge overlap, and retain meaningful minority observations. Do not impose a minimum or maximum number of findings.
 
-Write in the user's language. Order findings by `Blocker`, `Important`, then `Minor`; show the type in each title. For every finding, give its location, the observation, why it matters, and a proportionate direction. Omit empty priority sections.
+Write in the user's language. Order findings by `Blocker`, `Important`, then `Minor`; show the type in each title. For every finding, give its location, the concrete problem and supporting evidence, its consequences, and why it warrants attention in this PR. Omit empty priority sections.
 
-After findings, include `Needs verification` for grounded unresolved concerns and `Discussion` for worthwhile design alternatives that are not findings. Give each discussion a descriptive title, relevant location, the current decision and its context, why the point matters, its tradeoffs, the alternative, and the conditions under which that alternative is preferable. Order discussions by likely value and do not compress them into summary-only bullets.
+After findings, include `Needs verification` only for grounded unresolved concerns. Include `Discussion` only when a design alternative or unresolved choice would materially help the author or user. Give each discussion a descriptive title and relevant location; explain enough context, concrete benefits and costs, and conditions or uncertainties for the proposal to be assessed. Order discussions by likely value, keep depth proportional to the decision, and omit empty sections.
 
 End with a brief summary of the reviewed scope and checks actually run. If there are no findings, say so directly without inventing any.

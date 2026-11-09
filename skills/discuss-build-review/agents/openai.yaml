@@ -1,0 +1,6 @@
+interface:
+  display_name: "Discuss Build Review"
+  short_description: "Align direction, then improve code through independent review"
+
+policy:
+  allow_implicit_invocation: false

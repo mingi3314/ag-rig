@@ -1,0 +1,7 @@
+interface:
+  display_name: "Evaluate Review Feedback"
+  short_description: "Stress-test PR feedback before acting"
+  default_prompt: "Use $evaluate-review-feedback to assess whether these PR comments should be accepted, simplified, documented, deferred, or rejected."
+
+policy:
+  allow_implicit_invocation: false

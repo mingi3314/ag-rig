@@ -1,0 +1,3 @@
+interface:
+  display_name: "Create GitHub Issue"
+  short_description: "Record deferred work without prescribing implementation"
