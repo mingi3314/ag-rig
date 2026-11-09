@@ -7,8 +7,11 @@ and tool configuration, versioned together and installed across machines with
 ## What's inside
 
 - `skills/`: reusable workflows with their references, scripts, and templates.
-- `AGENTS.md`: shared engineering principles. Skul installs these as each
+- `instructions/AGENTS.md`: shared engineering principles. Skul installs these as each
   tool's native instruction file, such as `AGENTS.md` or `CLAUDE.md`.
+- `manifest.json`: explicit Codex and Claude Code targets. The instruction
+  source lives under `instructions/` because Skul excludes repository-root
+  instruction files from its source cache by default.
 
 The current skills were written for Codex. Some reference Codex-specific tools
 or other skills; installing them for another tool does not translate those
@@ -22,7 +25,7 @@ is private, authenticate Git over HTTPS first (for example, with
 authorized SSH key.
 
 ```sh
-npm install --global @solaqua/skul
+npm install --global @solaqua/skul@0.4.3
 
 # Preview the files and instructions to install.
 skul add mingi3314/ag-rig --global --agent codex --dry-run
@@ -49,12 +52,18 @@ to replace them. Restart the coding tool if new skills do not appear.
 ## Update and edit
 
 ```sh
-# Refresh this bundle and apply updates to its saved installation targets.
-skul update ag-rig
+# Refresh Skul's Git source cache, then apply the saved global targets.
+git -C ~/.skul/library/github.com/mingi3314/ag-rig pull --ff-only
+skul apply --global
 skul status --global
 ```
 
-Edit the source repository, commit, and push before updating each machine:
+Skul 0.4.3's `update` command only updates project-scoped installations. The
+commands above update this Git-backed global installation instead. They assume
+the HTTPS or SSH Git clone used in the installation instructions, not Skul's
+GitHub archive transport. Run them after committing and pushing source changes.
+
+Clone the source repository to edit it:
 
 ```sh
 git clone https://github.com/mingi3314/ag-rig.git ~/workspace/ag-rig

@@ -1,0 +1,20 @@
+{
+  "tools": {
+    "codex": {
+      "skills": {
+        "path": "skills"
+      },
+      "root_instruction": {
+        "path": "instructions/AGENTS.md"
+      }
+    },
+    "claude-code": {
+      "skills": {
+        "path": "skills"
+      },
+      "root_instruction": {
+        "path": "instructions/AGENTS.md"
+      }
+    }
+  }
+}
