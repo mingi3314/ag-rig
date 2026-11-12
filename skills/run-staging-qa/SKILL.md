@@ -1,6 +1,6 @@
 ---
 name: run-staging-qa
-description: Run Gherkin scenarios in staging with ego-browser, explore related flows, and report bugs and usability issues with evidence.
+description: Run Gherkin scenarios in staging with ego-browser, explore related flows, and write an HTML report of bugs and usability issues with evidence.
 ---
 
 # 스테이징 QA 실행
@@ -29,13 +29,13 @@ description: Run Gherkin scenarios in staging with ego-browser, explore related 
 
 ## 리포트
 
-지정한 출력 위치나 전달받은 실행 폴더를 사용하고, 둘 다 없으면 OS 임시 디렉터리에 고유한 `feature-qa-*` 실행 폴더를 만든다. 그 안에 `report.md`와 `evidence/`를 저장하고 `.feature`와 증거를 링크한다.
+지정한 출력 위치나 전달받은 실행 폴더를 사용하고, 둘 다 없으면 OS 임시 디렉터리에 고유한 `feature-qa-*` 실행 폴더를 만든다. 기본 리포트는 `report.html`로 저장하고 `.feature`와 `evidence/`를 링크한다. 외부 서비스 없이 열리는 HTML로 만들고, 화면 증거와 접히는 상세 기록을 제공한다. 기록의 입력·응답·로그는 HTML로 실행되지 않게 텍스트로 넣는다.
 
 - **먼저 읽을 내용:** 중요한 발견·사용자 영향·다음 조치를 짧은 목록이나 표로 쓴다. 문제가 없으면 주요 검증 결과를 적는다. 판단을 바꾸는 미검증 사항은 해당 결론 가까이에 두고, 건수는 보조 정보로 사용한다.
 - **발견 상세:** 문제를 드러내는 짧은 제목, 재현 조건·최소 절차, 기대 근거·실제 결과, 영향·우선순위 이유와 증거를 적는다. 사용성 개선과 확인 필요 항목도 작업 영향이 드러나게 쓴다.
 - **검증 상세·부록:** 미실행을 포함한 케이스별 상태·기대·실제 결과와 집계, 탐색한 흐름과 남은 질문, 핵심 미검증 위험과 필요한 준비를 남긴다. 시각·URL·버전·역할·화면 환경·데이터 정리는 재현에 필요한 정보만 뒤에 모은다.
 
-짧고 구체적인 문장으로 관찰·영향·조치를 연결한다. 긴 케이스 표·환경 정보는 접을 수 있는 부록 등으로 본문과 분리한다. 도구 사용·지침 준수 선언, 작성 경위, 반복되는 면책 문구와 작업 일지는 덜어낸다.
+익숙하고 쉬운 말로 관찰·영향·다음 할 일을 짧게 연결한다. ‘재진입’은 ‘다시 열기’처럼 풀어 쓰고, 정확한 개발 용어·수치·식별자는 필요한 설명과 함께 상세 기록에 둔다. 긴 검증 표·환경 정보는 접어두고, 도구 사용·지침 준수 선언·작성 경위·반복 면책 문구는 덜어낸다.
 
 우선순위는 영향·우회 가능성·반복 부담·발생 빈도의 근거로 설명한다. 재현 횟수를 실제 사용자 빈도로 간주하지 말고, 판단의 확실성과 심각도를 구분한다. 증거는 핵심 입력·상태와 현상 전후를 판별할 수 있게 남긴다.
 
