@@ -17,6 +17,9 @@ The current skills were written for Codex. Some reference Codex-specific tools
 or other skills; installing them for another tool does not translate those
 dependencies. MCP and subagent configuration can be added when needed.
 
+`run-staging-qa` and the integrated `feature-qa` workflow require a separately
+installed `ego-browser` skill and ego lite CLI for browser execution.
+
 ## Install
 
 Requires Node.js 20+, Git, and access to this repository. While the repository

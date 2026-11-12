@@ -1,0 +1,3 @@
+interface:
+  display_name: "스테이징 QA 실행"
+  short_description: "시나리오 검증과 탐색적 QA로 버그·사용성 문제를 기록"

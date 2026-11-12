@@ -1,0 +1,3 @@
+interface:
+  display_name: "QA 시나리오 생성"
+  short_description: "기능과 변경 사항의 QA 케이스를 Gherkin으로 도출"

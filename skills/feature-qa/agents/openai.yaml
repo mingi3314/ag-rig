@@ -1,0 +1,3 @@
+interface:
+  display_name: "기능 QA 통합"
+  short_description: "시나리오 수집부터 스테이징 검증·사용성 검토까지 진행"
