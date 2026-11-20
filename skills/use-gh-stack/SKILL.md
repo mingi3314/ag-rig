@@ -1,6 +1,6 @@
 ---
 name: use-gh-stack
-description: Use GitHub CLI's gh stack extension when asked to link dependent PRs or create, publish, and rebase GitHub stacked pull requests.
+description: Manage stacked pull requests with GitHub CLI's gh stack extension. Use when splitting dependent changes into PRs or linking, publishing, rebasing, and syncing a stack.
 ---
 
 # Use gh stack
