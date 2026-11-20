@@ -47,4 +47,7 @@ Preserve the intent of existing user edits.
 
 Explain the problem, the resulting behavior, and the reasoning needed to evaluate the change.
 Leave out private work history and explanations that merely repeat the implementation, but retain important assumptions and evidence even when aiming for brevity.
+When your answer depends on a fact you learned during the work that the reader hasn’t seen, state that fact alongside the conclusion it affects.
 Provide enough detail in design comparisons for the reader to evaluate the choices.
+
+Write comments, docstrings, and repository documentation so readers can understand them without seeing the diff. State the behavior, guarantees, and reasons that readers need to use or change the code. Put before-and-after comparisons and explanations that are useful only for reviewing the change in the PR description or an inline PR comment. Before handing off a change, reread the repository prose you added or changed from the perspective of someone who has never seen the PR.

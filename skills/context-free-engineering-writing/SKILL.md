@@ -53,7 +53,7 @@ Use consistent names for the same actor, state, or result. Do not vary terminolo
 
 ## Cold-reader review
 
-Before delivering or publishing the artifact, reread it as if the preceding conversation were unavailable. Perform this review internally unless the user asks to see it.
+Before delivering or publishing the artifact, reread it from the perspective of its intended human reader. Check whether the reader can answer the questions that matter for their task using only their expected background and what the artifact has explained so far. If an answer depends on a missing premise, state it where the reader needs it. Perform this review internally unless the user asks to see it.
 
 Revise anything that materially depends on missing conversation context, including:
 

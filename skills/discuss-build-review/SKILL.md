@@ -1,13 +1,11 @@
 ---
 name: discuss-build-review
-description: Carry out a coding task with concise direction-setting and an independent code/design review and repair loop. Use when the user wants iterative quality improvement before their final review.
+description: Carry out a coding task by agreeing on a direction, implementing it, and acting on independent review before handoff.
 ---
 
 # Discuss Build Review
 
-Own implementation, solution design, and verification in the main agent. Delegate independent problem assessment to a reviewer, so the user receives work that has already gone through substantive quality review.
-
-Apply this workflow to the authorized task. When joining existing work, start at the relevant stage; preserve directions and decisions already established. This orchestration is for the implementing agent. The delegated reviewer follows the reviewer role, without taking over implementation or starting another review loop.
+Own design decisions, implementation, and verification in the main agent. When joining existing work, start at the relevant stage and carry forward agreed requirements and decisions.
 
 ## Make the direction understandable
 
@@ -19,20 +17,24 @@ Skip this exchange for trivial tasks with no meaningful behavior or design choic
 
 ## Delegate an independent review
 
-Once implementation and appropriate author checks are ready, identify the actual review range: the requested PR, branch changes, commit, or worktree changes. Keep unrelated existing edits outside the task.
+Once the initial implementation and appropriate author checks are ready, identify the requested PR, branch, commit, or worktree changes, including any new task files. Keep unrelated edits outside the review.
 
-Read [references/reviewer.md](references/reviewer.md) at delegation time and pass its complete role instructions to a separate reviewer subagent. Prefer a fresh task context with the original request, agreed requirements and constraints, relevant engineering guidance, and the review range. Give the reviewer access to the actual diff and related code and consumers; an author-written summary alone is insufficient. Treat the author's design rationale as a claim to examine, not an approved conclusion.
+Read [pr-review-v2](../pr-review-v2/SKILL.md) and use its review contract, perspectives, and synthesis. For a small, obvious change, delegate all perspectives to one independent reviewer. When the skill calls for separate perspective reviewers, launch them directly from the main agent and synthesize their findings. Give reviewers fresh context with the original request, agreed requirements and constraints, relevant engineering guidance, and access to the actual diff and surrounding code.
 
-Wait for the review before deciding the next changes. If subagents are unavailable, disclose that the independent review could not be performed; do not describe self-review as independent review.
+Wait for the review before deciding how to respond to its findings. If subagents are unavailable, disclose that limitation at handoff.
 
-## Resolve findings and re-review
+## Decide how to act on findings
 
-Judge each finding against the code, requirements, and evidence. Investigate material uncertainty. The author chooses and implements the solution to warranted problems and performs verification appropriate to the changes. Record a concise reason when a finding is unsupported or does not warrant a change; do not silently discard it or fix it solely to satisfy the reviewer.
+Read [evaluate-review-feedback](../evaluate-review-feedback/SKILL.md) when findings need a decision. Apply it as the author to judge each finding's validity, priority, and benefit in the current scope. The main agent owns the disposition and implements warranted changes within the authorized task. A valid finding can justify a smaller fix, a conscious decision to keep the current design, or follow-up work outside the current scope. Record the decisive reason for material decisions. Capture worthwhile deferred work for follow-up, filing a separate issue when authorized.
 
-Return changed code, finding dispositions, and newly established facts to the independent reviewer. Have it assess whether the original problems are resolved and whether the resulting change introduces another worthwhile problem. A disposition or a passing test alone does not establish that a design problem is resolved.
+Verify repairs in proportion to the affected behavior and risk. Request focused independent re-review when a repair changes a material design choice or raises a material question about resolution or regressions. Give the reviewer the affected diff, relevant dispositions, and new evidence.
 
-Use the task's review budget. For initial trials, default to at most three reviewer passes, including the first; this is an adjustable budget, not a quality threshold or a required number of rounds. Finish earlier when there is no worthwhile unresolved issue in the reviewed scope and required author checks pass. Stop and hand off concrete unresolved issues when user judgment is required, review stops making progress, or the budget is exhausted. Do not label unresolved work ready.
+Use the task's review budget, defaulting to at most three passes, including the initial review. Finish once required checks pass and remaining findings have a reasoned disposition. Surface any unresolved issue that still affects readiness when user judgment is required, review stops making progress, or the budget is exhausted.
 
 ## Hand back a reviewable result
 
 Summarize the resulting behavior and important reasons, verification and its limits, substantive improvements from review, and any unresolved decisions or findings. Use a representative code or data example when it helps the user understand. Keep the review history concise; the user should not have to mediate each internal exchange.
+
+## Handle feedback after handoff
+
+Continue from the agreed direction and prior review. For a local, well-understood adjustment, make the change directly and check the affected behavior or artifact. A wording change may only need a diff check. A localized bug fix with clear expected behavior may need a targeted test. Reopen the direction discussion if the follow-up requires a material change to the agreed approach. Use independent review of the affected diff when a follow-up changes an important contract or guarantee, introduces material risk or uncertainty, or the user requests it.
